@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#17103b">
+<meta name="description" content="Fruit Nexus — Blox Fruits trading, fruit values, trade calculator, listings and community hub.">
+<meta name="application-name" content="Fruit Nexus Complete Prototype">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2309090d'/%3E%3Cpath d='M50 17 C57 8 68 10 72 13 C68 23 60 27 50 26' fill='%23ff3048'/%3E%3Cpath d='M50 28 C29 28 19 44 24 61 C29 79 43 86 50 86 C57 86 71 79 76 61 C81 44 71 28 50 28Z' fill='%23ff3048'/%3E%3Cpath d='M50 39 L57 51 L70 53 L60 63 L62 76 L50 70 L38 76 L40 63 L30 53 L43 51Z' fill='%2309090d'/%3E%3C/svg%3E">
+<title>Fruit Nexus — Trading Community</title>
+<style>
+:root{--bg:#09090d;--panel:#121219;--panel2:#191922;--line:#2b2b37;--red:#ff3048;--red2:#a90e28;--text:#f5f5f7;--muted:#a2a2b2;--green:#48e0a4;--gold:#ffca62}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at top right,#281018 0,transparent 38%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:245px 1fr;min-height:100vh}.sidebar{position:sticky;top:0;height:100vh;overflow:auto;border-right:1px solid var(--line);padding:22px 14px;background:#0d0d12}.brand{display:flex;align-items:center;gap:10px;padding:4px 10px 22px}.logo{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,var(--red),#6b0017);display:grid;place-items:center;font-size:22px;font-weight:900;box-shadow:0 6px 24px #ff30482b}.brand strong{display:block;font-size:16px;letter-spacing:.6px}.brand small{color:var(--muted);font-size:11px}.navlabel{font-size:10px;color:#777786;letter-spacing:1.5px;padding:14px 12px 7px}.nav{display:flex;flex-direction:column;gap:4px}.nav button{border:0;background:transparent;color:#c5c5d0;text-align:left;padding:11px 12px;border-radius:10px;display:flex;gap:11px;align-items:center;font-size:13px}.nav button:hover,.nav button.active{background:#291117;color:white}.nav button.active{box-shadow:inset 3px 0 var(--red)}.nav .ico{width:18px;text-align:center}.side-note{margin:20px 6px 0;padding:13px;border:1px solid var(--line);border-radius:12px;color:var(--muted);font-size:11px;line-height:1.5}.main{min-width:0}.topbar{height:70px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 28px;background:#0b0b0ddd;position:sticky;top:0;z-index:10;backdrop-filter:blur(14px)}.crumb{font-size:13px;color:var(--muted)}.crumb b{color:white}.top-actions{display:flex;align-items:center;gap:10px}.status{font-size:11px;color:var(--green);border:1px solid #235846;background:#10251e;padding:7px 10px;border-radius:20px}.avatar{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#2a1117;border:1px solid #5a202d;font-weight:800}.menu-btn{display:none}.content{padding:26px;max-width:1500px;margin:auto}.page{display:none;animation:fade .18s ease}.page.active{display:block}@keyframes fade{from{opacity:.3;transform:translateY(4px)}to{opacity:1;transform:none}}.hero{padding:28px;border:1px solid #48202a;border-radius:20px;background:linear-gradient(115deg,#251016,#141219 62%,#1b1119);position:relative;overflow:hidden}.hero:after{content:"🍈";position:absolute;font-size:130px;right:50px;top:12px;opacity:.10;transform:rotate(-18deg)}.eyebrow{color:#ff7485;font-size:11px;font-weight:800;letter-spacing:1.7px}.hero h1{font-size:clamp(26px,4vw,40px);line-height:1.1;margin:12px 0}.hero p{max-width:620px;color:#bcbac6;font-size:14px;line-height:1.6}.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.btn{border:1px solid var(--line);background:var(--panel2);color:white;padding:10px 14px;border-radius:10px;font-size:12px;font-weight:700}.btn.primary{background:var(--red);border-color:var(--red);color:white}.btn:hover{filter:brightness(1.12)}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:18px 0}.stat,.card,.box{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:17px}.stat small{color:var(--muted);font-size:11px}.stat strong{display:block;font-size:24px;margin-top:8px}.stat .sub{font-size:11px;color:var(--green);margin-top:4px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:25px 0 13px}.section-head h2{margin:0;font-size:19px}.section-head p{margin:5px 0 0;color:var(--muted);font-size:12px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.grid.four{grid-template-columns:repeat(4,minmax(0,1fr))}.item{background:linear-gradient(160deg,#17171f,#101015);border:1px solid var(--line);border-radius:14px;padding:14px;min-width:0}.itemtop{display:flex;align-items:center;gap:12px}.fruit-icon{width:48px;height:48px;flex:0 0 48px;border-radius:13px;display:grid;place-items:center;background:#24131a;border:1px solid #48202a;font-size:28px}.item h3{font-size:14px;margin:0 0 4px}.muted{color:var(--muted)}.tiny{font-size:11px}.value{font-size:19px;font-weight:850;margin:14px 0 3px}.tag{display:inline-flex;padding:4px 7px;border-radius:6px;background:#262630;color:#d7d7e0;font-size:10px}.tag.red{background:#35121a;color:#ff8795}.tag.green{background:#10271f;color:var(--green)}.item .row{justify-content:space-between;margin-top:12px}.item .btn{padding:7px 10px;font-size:11px}.toolbar{display:flex;gap:9px;flex-wrap:wrap;margin:15px 0}.field{background:#111117;border:1px solid var(--line);color:white;padding:11px 12px;border-radius:10px;outline:none;min-width:0}.field:focus{border-color:#a72b40}.search{flex:1;min-width:180px}.field option{background:#111117}.layout2{display:grid;grid-template-columns:1.2fr .8fr;gap:14px}.empty{padding:25px;text-align:center;color:var(--muted);border:1px dashed #41414e;border-radius:12px;font-size:13px;line-height:1.6}.notice{border:1px solid #554322;background:#211b10;color:#e8d4a3;border-radius:12px;padding:12px 14px;font-size:12px;line-height:1.55;margin:12px 0}.success{color:var(--green)}.danger{color:#ff8492}.listrow{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}.listrow:last-child{border-bottom:0}.listrow strong{font-size:13px}.listrow small{display:block;color:var(--muted);font-size:11px;margin-top:4px}.calc-cols{display:grid;grid-template-columns:1fr 1fr;gap:12px}.selected-list{min-height:90px;padding:10px;border:1px dashed #3a3a48;border-radius:10px;margin-top:10px}.selected-pill{display:flex;justify-content:space-between;align-items:center;padding:7px 8px;background:#1d1d27;border-radius:8px;font-size:12px;margin-bottom:6px}.selected-pill button{background:none;color:#ff8a98;border:0}.result{padding:18px;border-radius:12px;background:#17171f;border:1px solid var(--line);margin-top:12px}.result h3{margin:0 0 8px}.result strong{font-size:22px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.formgrid .full{grid-column:1/-1}textarea.field{resize:vertical;min-height:90px}.profile-head{display:flex;align-items:center;gap:15px}.bigavatar{width:70px;height:70px;border-radius:20px;background:linear-gradient(135deg,#ff3048,#520016);display:grid;place-items:center;font-size:27px;font-weight:900}.toggle{display:flex;justify-content:space-between;gap:12px;padding:13px 0;border-bottom:1px solid var(--line);font-size:13px}.toggle input{accent-color:var(--red)}.footer{text-align:center;color:#686875;font-size:10px;padding:35px 0 10px}.mobile-nav{display:none}.hidden{display:none!important}.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#24242e;border:1px solid #444451;padding:12px 16px;border-radius:10px;z-index:99;font-size:12px;box-shadow:0 8px 35px #0008;max-width:90vw}
+@media(max-width:1050px){.grid.four{grid-template-columns:repeat(2,minmax(0,1fr))}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.app{display:block}.sidebar{position:fixed;left:-270px;z-index:30;width:250px;transition:left .2s;box-shadow:20px 0 40px #0008}.sidebar.open{left:0}.topbar{height:60px;padding:0 15px}.menu-btn{display:inline-block}.content{padding:15px 13px 85px}.hero{padding:22px 17px}.hero:after{right:0;font-size:90px}.hero p{max-width:80%}.stats{gap:8px}.stat{padding:13px}.stat strong{font-size:21px}.grid,.grid.four{grid-template-columns:1fr 1fr;gap:8px}.item{padding:10px}.fruit-icon{width:40px;height:40px;flex-basis:40px;font-size:23px}.item h3{font-size:12px}.value{font-size:16px}.layout2,.calc-cols{grid-template-columns:1fr}.section-head{align-items:start}.status{display:none}.mobile-nav{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:20;background:#0d0d12f5;border-top:1px solid var(--line);padding:7px 3px calc(7px + env(safe-area-inset-bottom));justify-content:space-around;backdrop-filter:blur(15px)}.mobile-nav button{background:none;border:0;color:#b8b8c4;font-size:10px;display:flex;flex-direction:column;gap:4px;align-items:center}.mobile-nav button span{font-size:18px}.mobile-nav button.active{color:#ff6174}.top-actions{gap:7px}.formgrid{grid-template-columns:1fr}.formgrid .full{grid-column:auto}}
+@media(max-width:390px){.grid,.grid.four{grid-template-columns:1fr}.hero p{max-width:100%}.stats{grid-template-columns:1fr 1fr}}
+
+/* Fruit Nexus startup screen */
+#fnSplash{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:18px;background:radial-gradient(circle at 50% 42%,#35101a 0,#130b10 34%,#07070a 76%);transition:opacity .55s ease,visibility .55s ease}
+#fnSplash.fn-hide{opacity:0;visibility:hidden;pointer-events:none}
+.fn-mark{width:104px;height:104px;filter:drop-shadow(0 0 18px #ff304888);animation:fnPulse 1.6s ease-in-out infinite}
+.fn-splash-title{font-weight:900;font-size:27px;letter-spacing:4px;color:#fff;text-align:center}
+.fn-splash-title span{color:#ff3048}
+.fn-splash-sub{font-size:10px;letter-spacing:4px;color:#b6a7ad;text-transform:uppercase;margin-top:-10px}
+.fn-loader{width:174px;height:4px;border-radius:99px;background:#30232a;overflow:hidden;margin-top:10px}
+.fn-loader span{display:block;height:100%;width:38%;border-radius:99px;background:linear-gradient(90deg,#a90e28,#ff3048,#ff9aa8);animation:fnLoad 1.5s ease-in-out infinite}
+.fn-loading-label{font-size:10px;letter-spacing:2px;color:#9c8b92}
+@keyframes fnPulse{0%,100%{transform:scale(.97);opacity:.88}50%{transform:scale(1.04);opacity:1}}
+@keyframes fnLoad{0%{transform:translateX(-120%)}100%{transform:translateX(360%)}}
+@media(prefers-reduced-motion:reduce){.fn-mark,.fn-loader span{animation:none}}
+
+.admin-lock{position:fixed;inset:0;z-index:99999;background:rgba(4,4,8,.94);display:none;align-items:center;justify-content:center;padding:18px}
+.admin-lock.open{display:flex}.admin-card{width:min(100%,390px);background:#121219;border:1px solid #39303a;border-radius:20px;padding:24px;box-shadow:0 20px 70px #000}
+.admin-card h2{margin:8px 0}.admin-card p{color:#a2a2b2;font-size:13px;line-height:1.5}
+.admin-card input{width:100%;padding:13px;margin:7px 0;background:#09090d;color:#fff;border:1px solid #39303a;border-radius:10px}
+.admin-card .btn{width:100%;margin-top:9px}.admin-lock-note{font-size:11px!important;color:#ffca62!important}
+
+/* Reference-inspired mobile app skin */
+:root{--bg:#0e172b;--panel:#1d2a40;--panel2:#26344b;--line:#2a3850;--red:#6d5bd0;--red2:#34216f;--text:#f7f8ff;--mute:#98a7bf;--green:#27b99b}
+body{background:#0e172b;color:#f7f8ff}
+.topbar{background:linear-gradient(115deg,#29135a,#151d35);border:0}
+.brand .logo{background:linear-gradient(135deg,#7864ec,#36206f);box-shadow:0 5px 20px #6d5bd033}
+.nav button:hover,.nav button.active{background:#292b59}.nav button.active{box-shadow:inset 3px 0 #8170ff}
+.hero{background:linear-gradient(115deg,#2d175d,#1b2340 75%);border:0;border-radius:0 0 24px 24px}
+.eyebrow{color:#c0b5ff}.btn.primary{background:#6d5bd0;border-color:#6d5bd0}
+.stat,.card,.box{background:#1d2a40;border-color:#2a3850}.item{background:#1d2a40;border-color:#2a3850}.fruit-icon{background:#202d49;border-color:#303f5b}
+.field{background:#202d42;border-color:#35445a}.field:focus{border-color:#7968e5}.field option{background:#202d42}
+.result{background:#19263b;border-color:#34445a}.selected-list{border-color:#3d4d65}.selected-pill{background:#26354c}
+.tag{background:#2c3b52}.tag.red{background:#481e2d;color:#ff9cab}.tag.green{background:#12483e;color:#6ce3c6}
+.notice{background:#29243f;border-color:#49406f;color:#c5baff}
+.mobile-nav{background:#0e172bf5;border-top:1px solid #202c42;justify-content:space-around;gap:0;padding:6px 2px calc(6px + env(safe-area-inset-bottom))}
+.mobile-nav button{font-size:10px;min-width:0;flex:1;font-weight:700;padding:5px 0;border-radius:14px;color:#9caac0;white-space:nowrap}
+.mobile-nav button span{font-size:20px;line-height:22px}
+.mobile-nav button.active{color:#9b8cff;background:#282957}
+.content{padding:18px 14px 100px}
+#page-calculator .section-head{margin:0 -14px 14px;padding:20px 16px;background:linear-gradient(115deg,#29135a,#151d35);align-items:center}
+#page-calculator .section-head h2{font-size:30px}
+#page-calculator .section-head p{display:none}
+#page-calculator .notice{font-size:11px}
+#page-calculator .calc-cols{grid-template-columns:1fr 1fr;gap:10px}
+#page-calculator .calc-cols>.box{padding:12px;background:transparent;border:0}
+#page-calculator .calc-cols>.box h3{margin:0 -4px 10px;padding:11px 4px;text-align:center;color:white;border-radius:10px;background:#25a98e}
+#page-calculator .calc-cols>.box:nth-child(2) h3{background:#ff3b38}
+#page-calculator .toolbar{display:block}
+#page-calculator .toolbar .field{width:100%;margin-bottom:7px}
+#page-calculator .selected-list{min-height:145px;background:#34485e;border:1px solid #52677a;border-radius:5px}
+#page-calculator .result{padding:12px 8px;text-align:center}
+#page-calculator .result strong{font-size:20px}
+#page-calculator #calcResult{margin-top:8px;text-align:center}
+#page-listings .item{border:2px solid #d89d2c;border-radius:16px;padding:16px;background:#1e2b40}
+#page-feed .box{border-radius:20px;background:#1d2a40}
+@media(max-width:760px){.app{display:block}.sidebar{display:none}.topbar{height:54px;padding:0 14px}.crumb{font-size:13px}.content{padding:14px 13px 100px}.hero{margin:-14px -13px 16px;padding:23px 17px;border-radius:0 0 24px 24px}.hero h1{font-size:30px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.grid,.grid.four{grid-template-columns:1fr 1fr}.layout2{grid-template-columns:1fr}.mobile-nav{display:flex}#page-calculator .calc-cols{grid-template-columns:1fr 1fr}#page-calculator .calc-cols>.box{padding:6px 2px}#page-calculator .selected-list{min-height:140px}#page-calculator .section-head{margin:-14px -13px 14px;padding:20px 16px}#page-calculator .section-head h2{font-size:30px}}
+
+</style>
+
+<style id="reference-match-overrides">
+:root{--bg:#0f172b;--panel:#1d2a42;--panel2:#26344c;--line:#27364d;--text:#f5f7ff;--muted:#9aa8bf;--red:#ff3c39;--green:#2bbd9a}
+body{background:#0f172b;color:#f5f7ff}.app{grid-template-columns:245px minmax(0,1fr)}.sidebar{background:#101a30;border-color:#25324b}.nav button:hover,.nav button.active{background:#282957}.nav button.active{box-shadow:inset 3px 0 #8170ff}.topbar{background:#17103b;border-color:#252b42}.crumb{color:#fff}.content{max-width:1100px}.hero,.stat,.card,.box,.item{background:#1d2a42;border-color:#293951}.field{background:#1d2a42;border-color:#36465d}.btn.primary{background:#6955d6;border-color:#6955d6}.tag.red{background:#34244e;color:#b5a7ff}
+.profile-banner{margin:-14px -13px 22px;padding:24px 20px 18px;background:linear-gradient(135deg,#24104b,#2d1a64 60%,#1c1440);border-radius:0 0 22px 22px}.greeting{font-size:14px;font-weight:700;color:#d3c9ef}.profile-line{display:flex;align-items:center;justify-content:space-between}.profile-line h1{font-size:34px;margin:7px 0 20px;letter-spacing:-1px}.profile-line h1 span{color:#4ade80}.profile-badges{display:flex;align-items:center;gap:16px;font-size:25px}.gxrv-avatar{width:58px;height:58px;border-radius:50%;background:#030307;border:2px solid #171717;display:grid;place-items:center;color:#fff;font-size:13px;font-style:italic;font-weight:900;box-shadow:0 0 0 2px #3a245e}.rank-line{display:flex;gap:12px;align-items:center;margin:0 0 13px}.rank-icon{font-size:22px;background:#39305b;padding:5px 9px;border-radius:8px}.rank-line b{display:block;font-size:15px}.rank-line small{display:block;color:#b3a7d4;margin-top:3px}.xp-track{height:9px;background:#5e5279;border-radius:20px;overflow:hidden;margin:0 0 16px}.xp-track span{display:block;width:8%;height:100%;background:linear-gradient(90deg,#ffd21e,#ff7b19);border-radius:20px}.stuff-row{width:100%;display:flex;align-items:center;justify-content:space-between;border:0;border-radius:13px;padding:14px 15px;background:#211444;color:white;font-weight:800;text-align:left}.stuff-row b{background:#40345e;padding:9px 12px;border-radius:12px;color:#ffcf28}
+.shortcut-row{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:9px;margin:20px 0 23px}.shortcut-row button{border:0;background:transparent;color:#aebbd0;font-size:11px;font-weight:700;min-width:0;overflow:hidden;text-overflow:ellipsis}.shortcut-row i{display:grid;place-items:center;margin:0 auto 9px;width:58px;height:62px;border-radius:22px;background:#18243c;font-style:normal;font-size:28px}.shortcut-row button:nth-child(2) i{background:#252b37}.shortcut-row button:nth-child(3) i{background:#292039}.shortcut-row button:nth-child(4) i{background:#2c1e3b}.shortcut-row button:nth-child(5) i{background:#27203e}.shortcut-row button:nth-child(6) i{background:#152d48}.birthday-banner{width:100%;display:flex;align-items:center;gap:14px;text-align:left;border:0;border-radius:24px;padding:16px 18px;background:linear-gradient(110deg,#e953b1,#f28a28);color:white;margin:0 0 22px;box-shadow:0 5px 0 #e4a3a0}.gift-icon{display:grid;place-items:center;flex:0 0 58px;height:58px;border-radius:50%;background:white;font-size:30px}.birthday-banner span:nth-child(2){min-width:0;flex:1}.birthday-banner b{display:block;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.birthday-banner small{display:block;margin-top:5px;font-size:12px}.birthday-banner strong{font-size:27px}.people-strip{display:flex;gap:16px;overflow-x:auto;padding:7px 0 18px;margin:0 -4px 10px}.people-strip>div{flex:0 0 72px;text-align:center}.person-avatar{display:grid;place-items:center;width:70px;height:70px;border-radius:50%;border:4px solid #37445b;box-shadow:0 0 0 2px #151c2b;font-size:23px;margin:0 auto 8px}.person-avatar.gx{background:#030307;color:white;font-size:12px;font-style:italic;border-color:#252b3d}.person-avatar.blue{background:#0e3b88;border-color:#ffab36}.person-avatar.green{background:#579b3b;color:#fff;font-size:30px}.person-avatar.purple{background:#5030a0;font-size:30px}.person-avatar.anime{background:#153d75}.people-strip small{font-size:10px;color:#aab7cc;white-space:nowrap}.market-panel{background:#191d2b;border-radius:20px;padding:14px;margin:4px 0 24px}.market-panel>div{display:flex;justify-content:space-between;align-items:center;border-radius:12px;padding:14px 12px;margin-bottom:7px;font-size:12px}.market-panel>div:first-child{background:#102d2a;color:#27cda4}.market-panel>div:nth-child(2){background:#311d25;color:#ff626c}.market-panel strong{font-size:15px}.market-panel button{background:none;border:0;color:#9280ff;text-align:left;font-size:12px;font-weight:800;padding:7px 2px}.mini-head{align-items:center!important;margin:12px 0!important}.mini-head h2{font-size:22px!important}.rank-button{background:transparent;border:1px solid #e5ad37;border-radius:22px;padding:10px 14px;color:white;font-weight:800}.mini-games{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:24px}.mini-games button{border:0;border-radius:19px;min-height:92px;background:#169e54;color:#fff;font-weight:800;font-size:12px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px}.mini-games button:nth-child(2){background:#f3a30a}.mini-games button:nth-child(3){background:#b71927}.mini-games button:nth-child(4){background:#d87b06}.mini-games span{font-size:27px}.legacy-hero{margin-top:20px}.more-sheet{display:none;position:fixed;z-index:50;left:10px;right:10px;bottom:82px;background:#1b2740;border:1px solid #3a4760;border-radius:22px;padding:17px;box-shadow:0 20px 60px #000a}.more-sheet.open{display:block}.more-sheet-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:20px}.more-sheet-head button{border:0;background:#2b3852;color:white;border-radius:10px;padding:7px 10px}.more-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.more-grid button{border:1px solid #2b3953;background:#202e48;color:white;border-radius:13px;padding:12px 4px;font-size:24px}.more-grid small{display:block;font-size:10px;margin-top:7px;color:#c0cbe0}
+#page-calculator .section-head h2{font-size:30px}#page-calculator .section-head p,#page-calculator>.notice{display:none}#page-calculator .calc-cols>.box{border:0;padding:0;background:transparent}#page-calculator .calc-cols>.box h3{margin:0;text-align:center;padding:10px;background:#27a98e;color:white;border-radius:12px 12px 0 0;font-size:22px}#page-calculator .calc-cols>.box:nth-child(2) h3{background:#ff3735}#page-calculator .calc-cols>.box .toolbar{background:#27a98e;padding:0 12px 10px;margin:0;display:flex;flex-direction:column}#page-calculator .calc-cols>.box:nth-child(2) .toolbar{background:#ff3735}#page-calculator .calc-cols>.box .toolbar select{width:100%;background:#e5f0f0;color:#152235}#page-calculator .calc-cols>.box .toolbar .btn{background:#1eaa8d;border:0;width:100%}#page-calculator .calc-cols>.box:nth-child(2) .toolbar .btn{background:#ff3735}#page-calculator .selected-list{background:#34485d;border:1px solid #536a7c;border-radius:0;min-height:135px;margin:0;padding:8px}#page-calculator .result{margin-top:0;border-radius:0 0 12px 12px;background:#26384e;border:0;padding:10px;text-align:center}#page-calculator .calc-cols>.box .result .muted{color:#dbe4ee}#page-calculator .calc-cols>.box .result strong{font-size:20px}#calcResult{background:transparent;border:0;text-align:center;padding:15px}#calcResult h3{font-size:16px}#page-listings .item{border:2px solid #dca22d;background:#1d2a40;border-radius:17px;padding:14px;margin-bottom:13px}
+@media(max-width:760px){.app{display:block}.sidebar{display:none}.topbar{height:0;overflow:hidden;padding:0;border:0}.content{padding:0 13px 105px}.profile-banner{margin:0 -13px 22px;padding:24px 20px 18px}.legacy-hero{margin-top:24px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.grid,.grid.four{grid-template-columns:1fr 1fr}.mobile-nav{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:40;background:#0e172bf7;border-top:1px solid #202c42;justify-content:space-around;gap:0;padding:6px 2px calc(6px + env(safe-area-inset-bottom));backdrop-filter:blur(14px)}.mobile-nav button{font-size:10px;min-width:0;flex:1;font-weight:700;padding:5px 0;border-radius:14px;color:#9caac0;white-space:nowrap;background:transparent;border:0;display:flex;flex-direction:column;align-items:center;gap:4px;position:relative}.mobile-nav button span{font-size:21px;line-height:22px}.mobile-nav button.active{color:#9b8cff;background:#282957}.mobile-nav button em{position:absolute;width:8px;height:8px;border-radius:50%;background:#ff4a53;top:0;right:25%;}.shortcut-row{gap:3px}.shortcut-row i{width:48px;height:52px;border-radius:18px;font-size:24px}.shortcut-row button{font-size:10px}.birthday-banner{border-radius:22px;padding:14px}.gift-icon{flex-basis:48px;height:48px;font-size:25px}.birthday-banner b{font-size:13px}.birthday-banner small{font-size:11px}.people-strip{gap:12px}.person-avatar{width:65px;height:65px}.market-panel{padding:10px}.mini-games{gap:7px}.mini-games button{min-height:88px;border-radius:18px;font-size:11px}.section-head{margin:20px 0 12px}#page-calculator .section-head{margin:0 -13px 14px;padding:22px 17px;background:linear-gradient(110deg,#24104b,#2d1a64);border-radius:0}#page-calculator .section-head h2{font-size:30px}#page-calculator .calc-cols{grid-template-columns:1fr 1fr;gap:12px}#page-calculator .calc-cols>.box{padding:0;min-width:0}#page-calculator .calc-cols>.box h3{font-size:20px;padding:10px 2px}#page-calculator .calc-cols>.box .toolbar{padding:0 7px 10px}#page-calculator .calc-cols>.box .toolbar select{font-size:11px;padding:7px 4px}#page-calculator .calc-cols>.box .toolbar .btn{font-size:12px;padding:8px 3px}#page-calculator .selected-list{min-height:130px;padding:5px 3px}#page-calculator .selected-pill{font-size:10px;padding:6px 3px;gap:3px}#page-calculator .result{padding:9px 3px}#page-calculator .calc-cols>.box .result strong{font-size:17px}#page-listings .item{padding:13px}.hero h1{font-size:30px}}
+@media(min-width:761px){.profile-banner{border-radius:0 0 22px 22px}.mobile-nav{display:none}.legacy-hero{display:block}}
+</style>
+
+</head>
+<body>
+
+<div id="fnSplash" role="status" aria-label="Loading Fruit Nexus">
+  <svg class="fn-mark" viewBox="0 0 120 120" aria-hidden="true">
+    <defs>
+      <linearGradient id="fnFruit" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff6679"/><stop offset=".52" stop-color="#ff3048"/><stop offset="1" stop-color="#a90e28"/></linearGradient>
+      <linearGradient id="fnRing" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff6679"/><stop offset="1" stop-color="#8c0920"/></linearGradient>
+    </defs>
+    <circle cx="60" cy="60" r="54" fill="#10090d" stroke="url(#fnRing)" stroke-width="2"/>
+    <path d="M60 31c-24-1-36 17-30 38 5 18 20 29 30 29s25-11 30-29c6-21-6-39-30-38Z" fill="url(#fnFruit)"/>
+    <path d="M58 31c-1-11 7-19 19-20-1 11-7 19-19 20Z" fill="#ff6679" stroke="#ff3048" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M60 43 67 55 81 57 71 67 73 81 60 74 47 81 49 67 39 57 53 55Z" fill="#10090d"/>
+    <circle cx="60" cy="60" r="45" fill="none" stroke="#ff3048" stroke-opacity=".25"/>
+  </svg>
+  <div class="fn-splash-title">FRUIT <span>NEXUS</span></div>
+  <div class="fn-splash-sub">Blox Fruits Trading Hub</div>
+  <div class="fn-loader"><span></span></div>
+  <div class="fn-loading-label">INITIALIZING TRADING HUB</div>
+</div>
+
+<div class="app">
+<aside class="sidebar" id="sidebar">
+ <div class="brand"><div class="logo" aria-label="Fruit Nexus logo" style="display:grid;place-items:center;background:#170a10;border:1px solid #64202e;border-radius:13px;box-shadow:0 0 18px #ff304822;overflow:hidden">
+    <svg viewBox="0 0 100 100" width="34" height="34" aria-hidden="true"><path d="M50 25C30 24 19 40 24 59c4 17 17 27 26 27s22-10 26-27c5-19-6-35-26-34Z" fill="#ff3048"/><path d="M49 25c0-10 8-17 18-18-1 10-7 17-18 18Z" fill="#ff7b8b"/><path d="m50 38 6 11 13 2-9 9 2 12-12-6-12 6 2-12-9-9 13-2Z" fill="#09090d"/></svg>
+    </div><div><strong>FRUIT NEXUS</strong><small>TRADING HUB</small></div></div>
+ <div class="navlabel">OVERVIEW</div><nav class="nav">
+ <button class="active" data-page="home"><span class="ico">⌂</span>Home</button>
+ <button data-page="fruits"><span class="ico">🍈</span>Fruits & Values</button>
+ <button data-page="gamepasses"><span class="ico">🎮</span>Gamepasses</button>
+ <button data-page="calculator"><span class="ico">⚖️</span>Trade Calculator</button>
+ <button data-page="stock"><span class="ico">🛒</span>Normal Stock</button>
+ <button data-page="mirage"><span class="ico">🌫️</span>Mirage Stock</button>
+ <div class="navlabel">COMMUNITY</div>
+ <button data-page="listings"><span class="ico">🔁</span>Trade Listings</button>
+ <button data-page="feed"><span class="ico">▤</span>Community Feed</button>
+ <button data-page="chat"><span class="ico">💬</span>Community Chat</button>
+ <button data-page="reports"><span class="ico">🛡️</span>Scam Reports</button>
+ <button data-page="profiles"><span class="ico">👤</span>Trader Profiles</button>
+ <button data-page="history"><span class="ico">🕘</span>Trade History</button>
+ <div class="navlabel">MORE</div>
+ <button data-page="codes"><span class="ico">🎟️</span>Codes & Rewards</button>
+ <button data-page="news"><span class="ico">📰</span>News & Updates</button>
+ <button data-page="settings"><span class="ico">⚙️</span>Settings</button>
+ <button data-page="account"><span class="ico">🔐</span>Login / Register</button>
+ </nav>
+ <div class="side-note"><b style="color:white">Trade smart.</b><br>Check values, verify traders, and never share your password or private account details.</div>
+</aside>
+<main class="main">
+<header class="topbar"><div class="row"><button class="btn menu-btn" id="menuBtn">☰</button><div class="crumb">Fruit Nexus <span style="color:#555">/</span> <b id="crumb">Home</b></div></div><div class="top-actions"><span class="status">● Demo mode</span><button class="btn" data-goto="account">Sign in</button><div class="avatar" id="topAvatar">G</div></div></header>
+<div class="content">
+<section class="page active" id="page-home">
+ <div class="profile-banner"><div class="greeting">Good Morning</div><div class="profile-line"><h1>GXRV <span>☑️</span></h1><div class="profile-badges"><span>🇺🇸</span><div class="gxrv-avatar">GXRV</div></div></div><div class="rank-line"><span class="rank-icon">☠️</span><div><b>Adventurer</b><small>Level 7 • 2,705 XP</small></div></div><div class="xp-track"><span></span></div><button class="stuff-row" data-goto="account"><span>🍈 &nbsp; My Stuff</span><b>🏷️ 0　›</b></button></div>
+ <div class="shortcut-row"><button data-goto="fruits"><i>🍈</i>Values</button><button data-goto="history"><i>🏆</i>Leaderboard</button><button data-goto="codes"><i>⭐</i>Stars</button><button data-goto="profiles"><i>👕</i>My Profile</button><button data-goto="chat"><i>💕</i>Friends</button><button data-goto="reports"><i>🛡️</i>Mods</button></div>
+ <button class="birthday-banner" data-goto="feed"><span class="gift-icon">🎁</span><span><b>Welcome to Fruit Nexus!</b><small>Trade, share and connect with players 🎂</small></span><strong>›</strong></button>
+ <div class="people-strip"><div><span class="person-avatar gx">GXRV</span><small>You</small></div><div><span class="person-avatar blue">🌌</span><small>SPYDERYT</small></div><div><span class="person-avatar green">H</span><small>Hicham</small></div><div><span class="person-avatar purple">D</span><small>Daniel</small></div><div><span class="person-avatar anime">🐉</span><small>Trader</small></div></div>
+ <div class="market-panel"><div><b>♨ Hot 🔒</b><strong>+16%</strong></div><div><b>↘ Dropping 🔒</b><strong>-9%</strong></div><button data-goto="fruits">🔒 Check which items are going up and down ›</button></div>
+ <div class="section-head mini-head"><div><h2>🎮 Mini Games</h2><p>Quick community activities</p></div><button class="rank-button" data-goto="history">🏆 Ranks</button></div>
+ <div class="mini-games"><button data-goto="codes"><span>❔</span>Mystery</button><button data-goto="calculator"><span>🚀</span>Crash</button><button data-goto="listings"><span>💔</span>Smash</button><button data-goto="stock"><span>🧰</span>Chest</button></div>
+ <div class="hero legacy-hero"><div class="eyebrow">THE BLOX FRUITS TRADING HUB</div><h1>Trade smarter.<br><span style="color:var(--red)">Rule the market.</span></h1><p>Explore fruit values, compare trades, check gamepasses, and connect with the trading community — all in one place.</p><div class="row"><button class="btn primary" data-goto="fruits">Explore Fruits →</button><button class="btn" data-goto="calculator">Open Calculator</button></div></div>
+ <div class="stats"><div class="stat"><small>FRUIT CATALOG</small><strong id="fruitCount">12</strong><div class="sub">Demo entries</div></div><div class="stat"><small>GAMEPASSES</small><strong>6</strong><div class="sub">Reference section</div></div><div class="stat"><small>TRADE TOOLS</small><strong>01</strong><div class="sub">Calculator ready</div></div><div class="stat"><small>YOUR ACCOUNT</small><strong id="homeAccount">Guest</strong><div class="sub">Local demo only</div></div></div>
+ <div class="section-head"><div><h2>Popular Fruits</h2><p>Demo cards — values need verification before trading.</p></div><button class="btn" data-goto="fruits">View all →</button></div>
+ <div class="grid" id="featuredFruits"></div>
+ <div class="section-head"><div><h2>Quick Access</h2><p>Jump into a section.</p></div></div>
+ <div class="grid four"><div class="item"><div class="fruit-icon">⚖️</div><h3>Trade Calculator</h3><p class="tiny muted">Compare two sides.</p><button class="btn" data-goto="calculator">Open tool</button></div><div class="item"><div class="fruit-icon">🔁</div><h3>Trade Listings</h3><p class="tiny muted">Post a trade offer.</p><button class="btn" data-goto="listings">Browse offers</button></div><div class="item"><div class="fruit-icon">🛡️</div><h3>Scam Reports</h3><p class="tiny muted">Report suspicious behavior.</p><button class="btn" data-goto="reports">Open reports</button></div><div class="item"><div class="fruit-icon">🎟️</div><h3>Codes & Rewards</h3><p class="tiny muted">Keep track of codes.</p><button class="btn" data-goto="codes">View codes</button></div></div>
+ <div class="notice">⚠️ <b>Demo notice:</b> This is a standalone HTML prototype. Listings, chat, reports, profiles, and account data are saved only in this browser where implemented; there is no shared online database or verified live stock feed connected.</div>
+</section>
+<section class="page" id="page-fruits">
+ <div class="section-head"><div><h2>Fruits & Values</h2><p>Search the catalog and add fruits to the trade calculator.</p></div><span class="tag red">VALUES: DEMO</span></div>
+ <div class="toolbar"><input class="field search" id="fruitSearch" placeholder="Search fruits..."><select class="field" id="rarityFilter"><option value="all">All rarities</option><option>Common</option><option>Uncommon</option><option>Rare</option><option>Legendary</option><option>Mythical</option></select><select class="field" id="typeFilter"><option value="all">All types</option><option value="Elemental</option><option>Beast</option><option>Natural</option></select><select class="field" id="sortFilter"><option value="name">Sort: Name</option><option value="high">Value: High to Low</option><option value="low">Value: Low to High</option></select></div>
+ <div class="notice">Values shown are sample placeholder numbers for testing the interface, not verified current trade values. Check a trusted current value source before making a trade.</div>
+ <div class="grid" id="fruitCatalog"></div>
+</section>
+<section class="page" id="page-gamepasses">
+ <div class="section-head"><div><h2>Gamepasses</h2><p>Reference cards for common gamepasses.</p></div><span class="tag red">REFERENCE</span></div>
+ <div class="notice">Gamepass prices/values can change. These cards are not a live price feed and should be checked in-game.</div><div class="grid" id="gamepassGrid"></div>
+</section>
+<section class="page" id="page-calculator">
+ <div class="section-head"><div><h2>Trade Calculator</h2><p>Add items to each side to compare the demo values.</p></div><button class="btn" id="clearCalc">Clear all</button></div>
+ <div class="notice">This calculator uses only the sample values included in this HTML. It does not know live demand or official community values.</div>
+ <div class="calc-cols"><div class="box"><h3>🟥 Your Offer</h3><div class="toolbar"><select class="field search" id="yourFruit"></select><button class="btn primary" id="addYour">+ Add</button></div><div class="selected-list" id="yourList"></div><div class="result"><div class="muted tiny">YOUR TOTAL (DEMO)</div><strong id="yourTotal">0</strong></div></div>
+ <div class="box"><h3>🟩 Their Offer</h3><div class="toolbar"><select class="field search" id="theirFruit"></select><button class="btn primary" id="addTheir">+ Add</button></div><div class="selected-list" id="theirList"></div><div class="result"><div class="muted tiny">THEIR TOTAL (DEMO)</div><strong id="theirTotal">0</strong></div></div></div>
+ <div class="result" id="calcResult"><h3>Trade Result</h3><p class="muted tiny">Add items on both sides to compare.</p></div>
+ <div class="trade-actions" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:8px 0 20px"><button class="btn primary" id="createCalcTrade">⇥ Create Trade</button><button class="btn" id="logCalcTrade">▤ Log Trade</button><button class="btn danger" id="shareCalcTrade">↗ Share Trade</button></div>
+</section>
+<section class="page" id="page-stock">
+ <div class="section-head"><div><h2>Normal Stock</h2><p>Track the regular in-game fruit stock.</p></div><button class="btn" id="stockRefresh">Refresh panel</button></div>
+ <div class="notice">No live stock API is connected. Update this panel manually after checking the game.</div>
+ <div class="box"><div class="listrow"><div><strong>Stock status</strong><small id="stockUpdated">Not checked in this session</small></div><span class="tag">Manual</span></div><div class="formgrid"><label><span class="tiny muted">Fruit name</span><input class="field" id="stockFruit" placeholder="e.g. Light"></label><label><span class="tiny muted">Price / note</span><input class="field" id="stockPrice" placeholder="e.g. In stock"></label></div><button class="btn primary" id="addStock" style="margin-top:10px">Add stock note</button><div id="stockList" style="margin-top:12px"></div></div>
+</section>
+<section class="page" id="page-mirage">
+ <div class="section-head"><div><h2>Mirage Stock</h2><p>Keep notes about Mirage-related stock or sightings.</p></div></div>
+ <div class="notice">Mirage stock/sightings are not fetched automatically. Confirm information in-game before sharing.</div>
+ <div class="box"><label class="tiny muted">Mirage note</label><textarea class="field" id="mirageNote" placeholder="Add a sighting, time, or note..."></textarea><button class="btn primary" id="saveMirage" style="margin-top:10px">Save note</button><div id="mirageNotes" style="margin-top:12px"></div></div>
+</section>
+<section class="page" id="page-listings">
+ <div class="section-head"><div><h2>Trade Listings</h2><p>Create local demo offers and browse your saved listings.</p></div></div>
+ <div class="layout2"><div class="box"><h3>Create a listing</h3><div class="formgrid"><label><span class="tiny muted">Username / display name</span><input class="field" id="listingUser" placeholder="Your display name"></label><label><span class="tiny muted">Offering</span><input class="field" id="listingOffer" placeholder="e.g. Buddha + Portal"></label><label class="full"><span class="tiny muted">Looking for</span><input class="field" id="listingWant" placeholder="What do you want?"></label><label class="full"><span class="tiny muted">Extra details</span><textarea class="field" id="listingDetails" placeholder="Optional details"></textarea></label></div><button class="btn primary" id="createListing" style="margin-top:10px">Post listing</button></div><div class="box"><h3>Community offers</h3><div id="listingFeed"></div></div></div>
+ <div class="notice">Listings are stored on this device only. They are not visible to other users until a secure shared backend is connected. Never put passwords or private account details in a listing.</div>
+</section>
+<section class="page" id="page-feed">
+ <div class="section-head"><div><h2>Community Feed</h2><p>Post announcements or trading tips (local demo).</p></div></div>
+ <div class="box"><textarea class="field" id="feedText" placeholder="Share a trading tip or community update..." style="width:100%"></textarea><button class="btn primary" id="publishFeed" style="margin-top:10px">Publish post</button></div><div id="feedPosts" style="margin-top:14px"></div>
+</section>
+<section class="page" id="page-chat">
+ <div class="section-head"><div><h2>Community Chat</h2><p>Local chat preview.</p></div><span class="tag red">NOT ONLINE</span></div>
+ <div class="notice">This is not a live global chat. Messages stay in this browser only. A backend and moderation tools are required for a real community chat.</div>
+ <div class="box"><div id="chatMessages" style="min-height:150px;max-height:320px;overflow:auto"></div><div class="toolbar"><input class="field search" id="chatInput" maxlength="300" placeholder="Write a respectful message..."><button class="btn primary" id="sendChat">Send</button></div></div>
+</section>
+<section class="page" id="page-reports">
+ <div class="section-head"><div><h2>Scam Reports</h2><p>Record a concern for your own reference.</p></div></div>
+ <div class="notice">Reports entered here are private local notes, not verified allegations and not sent to moderators. Avoid posting personal information. Keep evidence and use the game's or platform's official reporting tools.</div>
+ <div class="layout2"><div class="box"><h3>New report note</h3><div class="formgrid"><label><span class="tiny muted">Reported display name</span><input class="field" id="reportName" placeholder="Display name only"></label><label><span class="tiny muted">Issue type</span><select class="field" id="reportType"><option>Suspicious trade</option><option>Harassment</option><option>Impersonation</option><option>Other</option></select></label><label class="full"><span class="tiny muted">Details</span><textarea class="field" id="reportDetails" placeholder="Describe what happened factually"></textarea></label></div><button class="btn primary" id="createReport" style="margin-top:10px">Save report note</button></div><div class="box"><h3>Saved notes</h3><div id="reportList"></div></div></div>
+</section>
+<section class="page" id="page-profiles">
+ <div class="section-head"><div><h2>Trader Profiles</h2><p>Build a local display profile.</p></div></div>
+ <div class="layout2"><div class="box"><div class="profile-head"><div class="bigavatar" id="profileInitial">G</div><div><h2 id="profileNameView" style="margin:0">Guest Trader</h2><span class="tag">Local profile</span></div></div><div class="listrow"><div><strong>Trader bio</strong><small id="profileBioView">No bio added yet.</small></div></div><div class="listrow"><div><strong>Community ID</strong><small id="communityIdView">Not generated</small></div><button class="btn" id="generateId">Generate ID</button></div></div><div class="box"><h3>Edit profile</h3><label class="tiny muted">Display name</label><input class="field" id="profileName" placeholder="Your display name" style="width:100%;margin:5px 0 12px"><label class="tiny muted">Short bio</label><textarea class="field" id="profileBio" placeholder="Trader bio..." style="width:100%;margin:5px 0 12px"></textarea><button class="btn primary" id="saveProfile">Save profile</button></div></div>
+</section>
+<section class="page" id="page-history">
+ <div class="section-head"><div><h2>Trade History</h2><p>Save a private record of trades you completed.</p></div></div>
+ <div class="layout2"><div class="box"><h3>Add trade record</h3><div class="formgrid"><label><span class="tiny muted">Trade partner</span><input class="field" id="historyPartner" placeholder="Display name"></label><label><span class="tiny muted">Date</span><input class="field" id="historyDate" type="date"></label><label class="full"><span class="tiny muted">What you gave / received</span><input class="field" id="historyItems" placeholder="e.g. Gave Buddha, received Portal"></label><label class="full"><span class="tiny muted">Notes</span><input class="field" id="historyNote" placeholder="Optional"></label></div><button class="btn primary" id="saveHistory" style="margin-top:10px">Save record</button></div><div class="box"><h3>Saved history</h3><div id="historyList"></div></div></div>
+</section>
+<section class="page" id="page-codes">
+ <div class="section-head"><div><h2>Codes & Rewards</h2><p>Keep a personal checklist of codes you want to check.</p></div></div>
+ <div class="notice">Codes expire often. This is not a live verified code feed; confirm current codes from official game/community announcements.</div>
+ <div class="box"><div class="toolbar"><input class="field search" id="codeInput" placeholder="Add a code to your checklist"><button class="btn primary" id="addCode">Add code</button></div><div id="codeList"></div></div>
+</section>
+<section class="page" id="page-news">
+ <div class="section-head"><div><h2>News & Updates</h2><p>Product updates and reminders.</p></div></div>
+ <div class="grid"><div class="item"><span class="tag red">FRUIT NEXUS</span><h3>Prototype ready</h3><p class="tiny muted">The core navigation and main section layouts are included in this single HTML file.</p></div><div class="item"><span class="tag">NEXT STEP</span><h3>Connect a database</h3><p class="tiny muted">Real accounts, shared listings, chat, and reports require a secure backend with access rules.</p></div><div class="item"><span class="tag">VALUES</span><h3>Verify before trading</h3><p class="tiny muted">Sample values are placeholders. Always check trusted current sources and in-game prices.</p></div></div>
+</section>
+<section class="page" id="page-settings">
+ <div class="section-head"><div><h2>Settings</h2><p>Adjust this browser prototype.</p></div></div>
+ <div class="box"><div class="toggle"><span><b>Compact card layout</b><br><small class="muted">Reduce spacing on catalog cards.</small></span><input type="checkbox" id="compactToggle"></div><div class="toggle"><span><b>Show demo value warning</b><br><small class="muted">Keep the reminder visible in catalog.</small></span><input type="checkbox" id="warningToggle" checked></div><div class="toggle"><span><b>Clear local demo data</b><br><small class="muted">Removes this prototype's saved notes and offers from this browser.</small></span><button class="btn" id="clearData">Clear data</button></div><div class="notice">Settings and saved data only affect this browser. This HTML does not connect to a server.</div></div>
+</section>
+<section class="page" id="page-account">
+ <div class="section-head"><div><h2>Login / Register</h2><p>Demo account UI — not secure authentication.</p></div></div>
+ <div class="layout2"><div class="box"><h3>Sign in</h3><label class="tiny muted">Email or username</label><input class="field" id="loginUser" placeholder="Email or username" style="width:100%;margin:5px 0 12px"><label class="tiny muted">Password</label><input class="field" id="loginPass" type="password" placeholder="Password" style="width:100%;margin:5px 0 12px"><button class="btn primary" id="demoLogin">Demo sign in</button></div><div class="box"><h3>Create a local profile</h3><label class="tiny muted">Display name</label><input class="field" id="registerName" placeholder="Display name" style="width:100%;margin:5px 0 12px"><label class="tiny muted">Email (optional)</label><input class="field" id="registerEmail" type="email" placeholder="you@example.com" style="width:100%;margin:5px 0 12px"><button class="btn primary" id="demoRegister">Create demo profile</button><p class="tiny muted">Do not enter a real password here. No password is saved or sent anywhere.</p></div></div>
+ <div class="notice">Real login/register requires a backend such as Supabase or Firebase, correct security rules, and a privacy policy. This prototype deliberately does not store passwords.</div>
+</section>
+
+<div class="section-head"><div><h2>Fruit Nexus — All Systems</h2><p>All major tools in one mobile-friendly HTML prototype.</p></div></div>
+<div class="grid">
+  <div class="item"><div class="itemtop"><div class="fruit-icon">🔐</div><div><h3>Login / Register</h3><span class="tag red">Local demo</span></div></div><p class="tiny muted">Create a demo profile on this device. Secure cross-device accounts need a backend.</p><button class="btn" onclick="gotoPage('account')">Open Account</button></div>
+  <div class="item"><div class="itemtop"><div class="fruit-icon">🍈</div><div><h3>Fruits & Values</h3><span class="tag">Catalog</span></div></div><p class="tiny muted">Search and filter fruits; sample values are editable placeholders.</p><button class="btn" onclick="gotoPage('fruits')">Browse Fruits</button></div>
+  <div class="item"><div class="itemtop"><div class="fruit-icon">⚖️</div><div><h3>Trade Calculator</h3><span class="tag">W / F / L</span></div></div><p class="tiny muted">Compare both sides of a trade using catalog values.</p><button class="btn" onclick="gotoPage('calculator')">Calculate Trade</button></div>
+  <div class="item"><div class="itemtop"><div class="fruit-icon">🔁</div><div><h3>Trade Listings</h3><span class="tag">Local demo</span></div></div><p class="tiny muted">Post and browse sample offers saved in this browser.</p><button class="btn" onclick="gotoPage('listings')">Open Listings</button></div>
+  <div class="item"><div class="itemtop"><div class="fruit-icon">🛒</div><div><h3>Normal Stock</h3><span class="tag">Manual</span></div></div><p class="tiny muted">Record stock notes manually; live stock API is not connected.</p><button class="btn" onclick="gotoPage('stock')">Check Stock</button></div>
+  <div class="item"><div class="itemtop"><div class="fruit-icon">🌙</div><div><h3>Mirage Stock</h3><span class="tag">Manual</span></div></div><p class="tiny muted">Save Mirage stock notes locally.</p><button class="btn" onclick="gotoPage('mirage')">Open Mirage</button></div>
+  <div class="item"><div class="itemtop"><div class="fruit-icon">💬</div><div><h3>Community Chat</h3><span class="tag">Local demo</span></div></div><p class="tiny muted">Messages stay on this device until a real-time database is connected.</p><button class="btn" onclick="gotoPage('chat')">Open Chat</button></div>
+  <div class="item"><div class="itemtop"><div class="fruit-icon">🚨</div><div><h3>Scam Reports</h3><span class="tag">Local demo</span></div></div><p class="tiny muted">Record a report locally. Real moderation needs a secure shared backend.</p><button class="btn" onclick="gotoPage('reports')">Report Scam</button></div>
+  <div class="item"><div class="itemtop"><div class="fruit-icon">👤</div><div><h3>Trader Profiles</h3><span class="tag">Profile</span></div></div><p class="tiny muted">Manage the demo profile and community ID.</p><button class="btn" onclick="gotoPage('profiles')">View Profiles</button></div>
+  <div class="item"><div class="itemtop"><div class="fruit-icon">📜</div><div><h3>Trade History</h3><span class="tag">Local demo</span></div></div><p class="tiny muted">Keep a local record of your trades.</p><button class="btn" onclick="gotoPage('history')">Open History</button></div>
+  <div class="item"><div class="itemtop"><div class="fruit-icon">📰</div><div><h3>News, Codes & Feed</h3><span class="tag">Community</span></div></div><p class="tiny muted">Open the included news, rewards and community feed sections.</p><button class="btn" onclick="gotoPage('news')">News & Updates</button></div>
+  <div class="item"><div class="itemtop"><div class="fruit-icon">🛡️</div><div><h3>Admin & Settings</h3><span class="tag red">Demo controls</span></div></div><p class="tiny muted">Settings and demo controls are included. A secure admin role must be enforced server-side.</p><button class="btn" onclick="gotoPage('settings')">Open Settings</button></div>
+</div>
+<div class="notice"><b>Important:</b> This is a single-file frontend prototype. It cannot securely provide real shared login, cross-user chat/listings, live stock, or admin permissions by HTML alone. Those need a backend/database and security rules. Never put private API keys in this file.</div>
+<div class="footer">FRUIT NEXUS • COMMUNITY TRADING HUB • FAN-MADE PROTOTYPE — NOT AFFILIATED WITH THE GAME</div>
+</div>
+</main>
+</div>
+<nav class="mobile-nav"><button data-goto="home" class="active"><span>🏠</span>Home</button><button data-goto="calculator"><span>🧮</span>Calculator</button><button data-goto="listings"><span>🔁</span>Trade</button><button data-goto="feed"><span>▣</span>Feed</button><button data-goto="chat"><span>💬</span>Chat<em></em></button><button id="moreNavBtn"><span>▦</span>More</button></nav>
+<div class="more-sheet" id="moreSheet"><div class="more-sheet-head"><b>More</b><button id="closeMore">✕</button></div><div class="more-grid"><button data-goto="fruits">🍈<small>Fruits & Values</small></button><button data-goto="gamepasses">🎮<small>Gamepasses</small></button><button data-goto="stock">🛒<small>Normal Stock</small></button><button data-goto="mirage">🌫️<small>Mirage Stock</small></button><button data-goto="profiles">👤<small>Profiles</small></button><button data-goto="reports">🛡️<small>Scam Reports</small></button><button data-goto="history">🕘<small>Trade History</small></button><button data-goto="codes">🎟️<small>Codes</small></button><button data-goto="news">📰<small>News</small></button><button data-goto="account">🔐<small>Account</small></button><button data-goto="settings">⚙️<small>Settings</small></button><button onclick="openAdminLock()">🔒<small>Admin</small></button></div></div>
+<div id="toast" class="toast hidden"></div>
+<script>
+const fruits=[
+{name:"Rocket",emoji:"🚀",rarity:"Common",type:"Natural",value:5000,demand:"Low"},
+{name:"Spin",emoji:"🌀",rarity:"Common",type:"Natural",value:7500,demand:"Low"},
+{name:"Chop",emoji:"🪓",rarity:"Common",type:"Natural",value:30000,demand:"Low"},
+{name:"Spring",emoji:"🌱",rarity:"Common",type:"Natural",value:60000,demand:"Low"},
+{name:"Flame",emoji:"🔥",rarity:"Uncommon",type:"Elemental",value:250000,demand:"Medium"},
+{name:"Ice",emoji:"❄️",rarity:"Uncommon",type:"Elemental",value:350000,demand:"Medium"},
+{name:"Light",emoji:"💡",rarity:"Rare",type:"Elemental",value:800000,demand:"Medium"},
+{name:"Magma",emoji:"🌋",rarity:"Rare",type:"Elemental",value:1150000,demand:"Medium"},
+{name:"Quake",emoji:"🌊",rarity:"Legendary",type:"Natural",value:1000000,demand:"Medium"},
+{name:"Buddha",emoji:"🟡",rarity:"Legendary",type:"Beast",value:12000000,demand:"High"},
+{name:"Portal",emoji:"🌀",rarity:"Legendary",type:"Natural",value:8000000,demand:"High"},
+{name:"Kitsune",emoji:"🦊",rarity:"Mythical",type:"Beast",value:80000000,demand:"High"}
+];
+const gamepasses=[
+{name:"2x Money",emoji:"💰",note:"In-game gamepass",price:"Check in-game"},
+{name:"2x Mastery",emoji:"⚔️",note:"In-game gamepass",price:"Check in-game"},
+{name:"Dark Blade",emoji:"🗡️",note:"Gamepass / item",price:"Check in-game"},
+{name:"Fruit Notifier",emoji:"🔔",note:"In-game gamepass",price:"Check in-game"},
+{name:"Fast Boats",emoji:"🚤",note:"In-game gamepass",price:"Check in-game"},
+{name:"Extra Fruit Storage",emoji:"📦",note:"In-game gamepass",price:"Check in-game"}
+];
+const $=id=>document.getElementById(id);
+const get=(k,def=[])=>{try{return JSON.parse(localStorage.getItem("fn_"+k))??def}catch{return def}};
+const set=(k,v)=>localStorage.setItem("fn_"+k,JSON.stringify(v));
+function toast(msg){$("toast").textContent=msg;$("toast").classList.remove("hidden");setTimeout(()=>$("toast").classList.add("hidden"),2400)}
+function gotoPage(name){document.querySelectorAll(".page").forEach(p=>p.classList.toggle("active",p.id==="page-"+name));document.querySelectorAll(".nav button[data-page]").forEach(b=>b.classList.toggle("active",b.dataset.page===name));document.querySelectorAll(".mobile-nav button").forEach(b=>b.classList.toggle("active",b.dataset.goto===name));$("crumb").textContent=({home:"Home",fruits:"Fruits & Values",gamepasses:"Gamepasses",calculator:"Trade Calculator",stock:"Normal Stock",mirage:"Mirage Stock",listings:"Trade Listings",feed:"Community Feed",chat:"Community Chat",reports:"Scam Reports",profiles:"Trader Profiles",history:"Trade History",codes:"Codes & Rewards",news:"News & Updates",settings:"Settings",account:"Login / Register"})[name]||name; $("sidebar").classList.remove("open");window.scrollTo({top:0,behavior:"smooth"})}
+document.querySelectorAll("[data-page]").forEach(b=>b.addEventListener("click",()=>gotoPage(b.dataset.page)));
+document.querySelectorAll("[data-goto]").forEach(b=>b.addEventListener("click",()=>gotoPage(b.dataset.goto)));
+$("menuBtn").onclick=()=>$("sidebar").classList.toggle("open");
+function fruitCard(f){return `<article class="item"><div class="itemtop"><div class="fruit-icon">${f.emoji}</div><div><h3>${f.name}</h3><div class="tiny muted">${f.rarity} · ${f.type}</div></div></div><div class="value">${f.value.toLocaleString()} <span class="tiny muted">demo</span></div><span class="tag ${f.demand==="High"?"green":""}">Demand: ${f.demand}</span><div class="row"><span class="tag">${f.rarity}</span><button class="btn" onclick="addFruitToCalc('${f.name}','your')">+ Your offer</button></div></article>`}
+function renderFruits(){let q=($("fruitSearch")?.value||"").toLowerCase(),rar=$("rarityFilter")?.value||"all",typ=$("typeFilter")?.value||"all",sort=$("sortFilter")?.value||"name";let data=fruits.filter(f=>f.name.toLowerCase().includes(q)&&(rar==="all"||f.rarity===rar)&&(typ==="all"||f.type===typ));if(sort==="high")data.sort((a,b)=>b.value-a.value);else if(sort==="low")data.sort((a,b)=>a.value-b.value);else data.sort((a,b)=>a.name.localeCompare(b.name));$("fruitCatalog").innerHTML=data.map(fruitCard).join("")||'<div class="empty">No fruits found. Try another search.</div>'}
+$("fruitSearch").addEventListener("input",renderFruits);["rarityFilter","typeFilter","sortFilter"].forEach(id=>$(id).addEventListener("change",renderFruits));
+$("featuredFruits").innerHTML=fruits.slice(4,7).concat(fruits.slice(9,12)).map(fruitCard).join("");renderFruits();
+$("gamepassGrid").innerHTML=gamepasses.map(g=>`<article class="item"><div class="itemtop"><div class="fruit-icon">${g.emoji}</div><div><h3>${g.name}</h3><div class="tiny muted">${g.note}</div></div></div><div class="value" style="font-size:15px">${g.price}</div><span class="tag">Price varies / verify</span></article>`).join("");
+const calc={your:[],their:[]};
+function addFruitToCalc(name,side){const f=fruits.find(x=>x.name===name);if(!f)return;calc[side].push(f);renderCalc();toast(f.name+" added to "+side+" offer")}
+function setupCalcSelects(){["yourFruit","theirFruit"].forEach(id=>$(id).innerHTML=fruits.map(f=>`<option value="${f.name}">${f.name} — ${f.value.toLocaleString()} demo</option>`).join(""))}
+function renderCalc(){["your","their"].forEach(side=>{$(side+"List").innerHTML=calc[side].map((f,i)=>`<div class="selected-pill"><span>${f.emoji} ${f.name} <span class="muted">(${f.value.toLocaleString()})</span></span><button onclick="removeCalc('${side}',${i})">✕</button></div>`).join("")||'<span class="tiny muted">No items added yet.</span>';$((side==="your"?"yourTotal":"theirTotal")).textContent=calc[side].reduce((s,f)=>s+f.value,0).toLocaleString()});let a=calc.your.reduce((s,f)=>s+f.value,0),b=calc.their.reduce((s,f)=>s+f.value,0),diff=Math.abs(a-b),pct=Math.max(a,b)?Math.round(diff/Math.max(a,b)*100):0;$("calcResult").innerHTML=a===0&&b===0?'<h3>Trade Result</h3><p class="muted tiny">Add items on both sides to compare.</p>':`<h3>${a===b?"Even sample value":a>b?"Their offer is lower":"Their offer is higher"}</h3><p class="muted tiny">Difference: ${diff.toLocaleString()} sample points · ${pct}% difference. Demand and live values are not included.</p>`}
+function removeCalc(side,i){calc[side].splice(i,1);renderCalc()}
+function calcSummary(){const a=calc.your.reduce((s,f)=>s+f.value,0),b=calc.their.reduce((s,f)=>s+f.value,0);return {a,b,ours:calc.your.map(f=>f.name).join(', '),theirs:calc.their.map(f=>f.name).join(', '),difference:Math.abs(a-b),result:a===b?'Even (sample values)':a>b?'Their offer is lower (sample values)':'Their offer is higher (sample values)'}}
+function requireCalcItems(){if(!calc.your.length||!calc.their.length){toast('Add at least one item to both sides first.');return false}return true}
+$("createCalcTrade").onclick=()=>{if(!requireCalcItems())return;const s=calcSummary();const a=get('listings');a.push({user:profile().name||'Guest Trader',offer:s.ours,want:s.theirs,details:`Calculator trade · Your value ${s.a.toLocaleString()} · Their value ${s.b.toLocaleString()} · ${s.result}`,time:new Date().toLocaleString()});set('listings',a);renderListings();gotoPage('listings');toast('Trade listing created on this device')};
+$("logCalcTrade").onclick=()=>{if(!requireCalcItems())return;const s=calcSummary();const a=get('history');a.push({partner:'Trade calculator',date:new Date().toISOString().slice(0,10),items:`You: ${s.ours} (${s.a.toLocaleString()}) ⇄ Them: ${s.theirs} (${s.b.toLocaleString()})`,note:s.result});set('history',a);renderHistory();toast('Trade saved to local history')};
+$("shareCalcTrade").onclick=async()=>{if(!requireCalcItems())return;const s=calcSummary();const text=`Fruit Nexus Trade
+YOU: ${s.ours} = ${s.a.toLocaleString()} sample value
+THEM: ${s.theirs} = ${s.b.toLocaleString()} sample value
+Result: ${s.result}
+Values are placeholders, not live values.`;try{if(navigator.share)await navigator.share({title:'Fruit Nexus Trade',text});else if(navigator.clipboard?.writeText){await navigator.clipboard.writeText(text);toast('Trade summary copied')}else{prompt('Copy your trade summary:',text)}}catch(e){if(e.name!=='AbortError')prompt('Copy your trade summary:',text)}};
+$("addYour").onclick=()=>addFruitToCalc($("yourFruit").value,"your");$("addTheir").onclick=()=>addFruitToCalc($("theirFruit").value,"their");$("clearCalc").onclick=()=>{calc.your=[];calc.their=[];renderCalc()};setupCalcSelects();renderCalc();
+function showList(id,items,formatter){$(id).innerHTML=items.length?items.slice().reverse().map(formatter).join(""):'<div class="empty">Nothing saved here yet.</div>'}
+function addStockNote(){let name=$("stockFruit").value.trim(),price=$("stockPrice").value.trim();if(!name||!price)return toast("Enter a fruit and stock note.");let a=get("stock");a.push({name,price,time:new Date().toLocaleString()});set("stock",a);$("stockFruit").value="";$("stockPrice").value="";renderStock();toast("Stock note saved locally")}
+function renderStock(){showList("stockList",get("stock"),x=>`<div class="listrow"><div><strong>${escapeHtml(x.name)}</strong><small>${escapeHtml(x.price)} · ${escapeHtml(x.time)}</small></div></div>`)}
+$("addStock").onclick=addStockNote;$("stockRefresh").onclick=()=>{$("stockUpdated").textContent="Panel refreshed: "+new Date().toLocaleString();renderStock();toast("Panel refreshed; no live stock feed connected")};renderStock();
+$("saveMirage").onclick=()=>{let n=$("mirageNote").value.trim();if(!n)return toast("Write a note first.");let a=get("mirage");a.push({text:n,time:new Date().toLocaleString()});set("mirage",a);$("mirageNote").value="";renderMirage();toast("Mirage note saved locally")};function renderMirage(){showList("mirageNotes",get("mirage"),x=>`<div class="listrow"><div><strong>${escapeHtml(x.text)}</strong><small>${escapeHtml(x.time)}</small></div></div>`)}renderMirage();
+$("createListing").onclick=()=>{let user=$("listingUser").value.trim()||get("profile",{name:"Guest Trader"}).name||"Guest Trader",offer=$("listingOffer").value.trim(),want=$("listingWant").value.trim(),details=$("listingDetails").value.trim();if(!offer||!want)return toast("Add both your offer and what you want.");let a=get("listings");a.push({user,offer,want,details,time:new Date().toLocaleString()});set("listings",a);["listingOffer","listingWant","listingDetails"].forEach(id=>$(id).value="");renderListings();toast("Listing saved on this device")};function renderListings(){showList("listingFeed",get("listings"),x=>`<div class="item" style="margin-bottom:9px"><div class="row"><strong>${escapeHtml(x.user)}</strong><span class="tiny muted">${escapeHtml(x.time)}</span></div><p class="tiny"><b>Offering:</b> ${escapeHtml(x.offer)}</p><p class="tiny"><b>Looking for:</b> ${escapeHtml(x.want)}</p>${x.details?`<p class="tiny muted">${escapeHtml(x.details)}</p>`:""}</div>`)}renderListings();
+$("publishFeed").onclick=()=>{let text=$("feedText").value.trim();if(!text)return toast("Write something first.");let a=get("feed");a.push({text,time:new Date().toLocaleString(),user:get("profile",{name:"Guest Trader"}).name});set("feed",a);$("feedText").value="";renderFeed();toast("Post saved locally")};function renderFeed(){showList("feedPosts",get("feed"),x=>`<div class="box" style="margin-bottom:10px"><div class="row"><strong>${escapeHtml(x.user||"Guest Trader")}</strong><span class="tiny muted">${escapeHtml(x.time)}</span></div><p style="font-size:13px;line-height:1.5">${escapeHtml(x.text)}</p></div>`)}renderFeed();
+$("sendChat").onclick=()=>{let text=$("chatInput").value.trim();if(!text)return;let a=get("chat");a.push({text,time:new Date().toLocaleTimeString(),user:get("profile",{name:"Guest Trader"}).name});set("chat",a);$("chatInput").value="";renderChat()};$("chatInput").addEventListener("keydown",e=>{if(e.key==="Enter")$("sendChat").click()});function renderChat(){showList("chatMessages",get("chat"),x=>`<div class="listrow"><div><strong>${escapeHtml(x.user||"Guest Trader")}</strong><small>${escapeHtml(x.time)}</small><p style="font-size:13px;margin:6px 0">${escapeHtml(x.text)}</p></div></div>`)}renderChat();
+$("createReport").onclick=()=>{let name=$("reportName").value.trim(),details=$("reportDetails").value.trim();if(!name||!details)return toast("Add display name and details.");let a=get("reports");a.push({name,type:$("reportType").value,details,time:new Date().toLocaleString()});set("reports",a);$("reportName").value="";$("reportDetails").value="";renderReports();toast("Private report note saved")};function renderReports(){showList("reportList",get("reports"),x=>`<div class="item" style="margin-bottom:9px"><span class="tag red">${escapeHtml(x.type)}</span><h3 style="margin-top:9px">${escapeHtml(x.name)}</h3><p class="tiny">${escapeHtml(x.details)}</p><small class="muted">${escapeHtml(x.time)}</small></div>`)}renderReports();
+function profile(){return get("profile",{name:"Guest Trader",bio:"",id:""})}function renderProfile(){let p=profile();$("profileNameView").textContent=p.name||"Guest Trader";$("profileBioView").textContent=p.bio||"No bio added yet."; $("profileInitial").textContent=(p.name||"G").charAt(0).toUpperCase();$("topAvatar").textContent=(p.name||"G").charAt(0).toUpperCase();$("homeAccount").textContent=p.name||"Guest";$("communityIdView").textContent=p.id||"Not generated";$("profileName").value=p.name==="Guest Trader"?"":p.name;$("profileBio").value=p.bio||""} $("saveProfile").onclick=()=>{let p=profile();p.name=$("profileName").value.trim()||"Guest Trader";p.bio=$("profileBio").value.trim();set("profile",p);renderProfile();toast("Profile saved locally")};$("generateId").onclick=()=>{let p=profile();if(!p.id)p.id=String(Math.floor(10000000+Math.random()*90000000));set("profile",p);renderProfile();toast("Local community ID generated")};renderProfile();
+$("saveHistory").onclick=()=>{let items=$("historyItems").value.trim();if(!items)return toast("Add trade items first.");let a=get("history");a.push({partner:$("historyPartner").value.trim()||"Unknown",date:$("historyDate").value||new Date().toISOString().slice(0,10),items,note:$("historyNote").value.trim()});set("history",a);["historyPartner","historyItems","historyNote"].forEach(id=>$(id).value="");renderHistory();toast("Trade record saved")};function renderHistory(){showList("historyList",get("history"),x=>`<div class="listrow"><div><strong>${escapeHtml(x.items)}</strong><small>With ${escapeHtml(x.partner)} · ${escapeHtml(x.date)}${x.note?" · "+escapeHtml(x.note):""}</small></div></div>`)}renderHistory();
+$("addCode").onclick=()=>{let code=$("codeInput").value.trim();if(!code)return toast("Enter a code.");let a=get("codes");if(!a.some(x=>x.code.toLowerCase()===code.toLowerCase()))a.push({code,checked:false});set("codes",a);$("codeInput").value="";renderCodes()};function renderCodes(){showList("codeList",get("codes"),x=>`<div class="listrow"><div><strong>${escapeHtml(x.code)}</strong><small>${x.checked?"Marked checked":"Not checked yet"}</small></div><button class="btn" onclick="toggleCode('${encodeURIComponent(x.code)}')">${x.checked?"Undo":"Mark checked"}</button></div>`)}function toggleCode(code){let c=decodeURIComponent(code),a=get("codes");a=a.map(x=>x.code===c?{...x,checked:!x.checked}:x);set("codes",a);renderCodes()}renderCodes();
+function escapeHtml(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+$("demoLogin").onclick=()=>{let u=$("loginUser").value.trim();if(!u)return toast("Enter a display name or email.");if(!$ ("loginPass").value.trim())return toast("Enter a demo password field to continue.");let p=profile();p.name=u.includes("@")?u.split("@")[0]:u;set("profile",p);renderProfile();toast("Demo sign-in only — no real authentication")};$("demoRegister").onclick=()=>{let n=$("registerName").value.trim();if(!n)return toast("Enter a display name.");let p=profile();p.name=n;set("profile",p);renderProfile();gotoPage("profiles");toast("Local demo profile created")};
+$("compactToggle").onchange=e=>document.body.classList.toggle("compact",e.target.checked);$("warningToggle").onchange=e=>document.querySelectorAll(".notice").forEach(n=>n.classList.toggle("hidden",!e.target.checked));$("clearData").onclick=()=>{if(confirm("Clear all Fruit Nexus local demo data from this browser?")){Object.keys(localStorage).filter(k=>k.startsWith("fn_")).forEach(k=>localStorage.removeItem(k));location.reload()}};
+
+// Hide startup screen after the page is ready; also includes a failsafe.
+(function(){
+  const hideFruitNexusSplash = () => {
+    const splash = document.getElementById('fnSplash');
+    if (splash) {
+      splash.classList.add('fn-hide');
+      window.setTimeout(() => splash.remove(), 700);
+    }
+  };
+  window.addEventListener('load', () => window.setTimeout(hideFruitNexusSplash, 1500), {once:true});
+  window.setTimeout(hideFruitNexusSplash, 5000);
+})();
+
+</script>
+<div class="admin-lock" id="adminLock" role="dialog" aria-modal="true" aria-labelledby="adminLockTitle">
+  <div class="admin-card">
+    <div style="font-size:32px">🔐</div>
+    <h2 id="adminLockTitle">Fruit Nexus Admin</h2>
+    <p>Admin account + PIN required. Only use an account that you control.</p>
+    <form id="adminLoginForm">
+      <input id="adminEmail" type="email" autocomplete="username" placeholder="Admin account email" required>
+      <input id="adminPin" type="password" inputmode="numeric" autocomplete="current-password" placeholder="Secret PIN" minlength="4" maxlength="12" required>
+      <button class="btn primary" type="submit">Unlock Admin</button>
+      <button class="btn" type="button" onclick="closeAdminLock()">Cancel</button>
+    </form>
+    <p id="adminLoginMessage" aria-live="polite"></p>
+    <p class="admin-lock-note">Security note: this screen is a frontend placeholder. Real protection requires server-side account verification; do not store a real PIN or secret key in this HTML file.</p>
+  </div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{const more=document.getElementById('moreNavBtn'),sheet=document.getElementById('moreSheet'),close=document.getElementById('closeMore');if(more&&sheet)more.addEventListener('click',()=>sheet.classList.toggle('open'));if(close&&sheet)close.addEventListener('click',()=>sheet.classList.remove('open'));document.querySelectorAll('#moreSheet [data-goto]').forEach(b=>b.addEventListener('click',()=>sheet.classList.remove('open')));});
+function openAdminLock(){const el=document.getElementById('adminLock');if(el)el.classList.add('open');}
+function closeAdminLock(){const el=document.getElementById('adminLock');if(el)el.classList.remove('open');}
+document.addEventListener('DOMContentLoaded',()=>{
+  // Keep admin tools closed by default. Connect this form to a trusted backend before production use.
+  const form=document.getElementById('adminLoginForm');
+  if(form) form.addEventListener('submit',ev=>{
+    ev.preventDefault();
+    const msg=document.getElementById('adminLoginMessage');
+    if(msg) msg.textContent='Admin authentication is not connected yet. Connect Supabase/Firebase server-side authentication before enabling admin access.';
+  });
+});
+</script>
+<script>
+// Persist selected interface preferences and expose a single-file build marker.
+try { if(localStorage.getItem('fn_compact')==='1') document.body.classList.add('compact'); } catch(e) {}
+const compactPreference=document.getElementById('compactToggle');
+if(compactPreference){compactPreference.addEventListener('change',e=>{try{localStorage.setItem('fn_compact',e.target.checked?'1':'0')}catch(err){}})}
+window.FruitNexusBuild={version:'1.0.0-single-file',storage:'localStorage prototype',backendConnected:false};
+</script>
+</body>
+</html>
